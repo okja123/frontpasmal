@@ -1,0 +1,16 @@
+export interface IVideoStreamLight {
+  Guid: string,
+  CameraGuid: string,
+  Name: string,
+  MulticastAdress: string,
+  ImageQuality: number,
+  IsImageCropped: boolean,
+  KeyFrameInterval: number,
+  RecordingFrameInterval: string,
+  BitRate: number,
+  FrameRate: number,
+  ResolutionX: number,
+  ResolutionY: number,
+  SiteName: string,
+  Usages: string[],
+}

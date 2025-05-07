@@ -1,0 +1,10 @@
+.PlatformSelect{
+    display: flex;
+    justify-content: center;
+}
+.platform-select-button{
+    margin: 5px;
+    background-color: transparent;
+    border: 0;
+
+}

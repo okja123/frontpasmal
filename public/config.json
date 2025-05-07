@@ -1,0 +1,26 @@
+{
+    "baseURL":"https://localhost:443/",
+    "role":[
+        {
+            "code" : "ADM",
+            "name" : "Administrateur"
+        },
+        {
+            "code" : "DEM",
+            "name" : "Demandeur"
+        },
+        {
+            "code" : "INT",
+            "name" : "Intégrateur"
+        },
+        {
+            "code" : "LIC",
+            "name" : "Licence"
+        }
+    ],
+    "dureeEnregistrements":[
+        "10 jours",
+        "30 jours"
+    ]
+
+}

@@ -1,0 +1,46 @@
+.infocamera{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.infocamera h2,h1{
+    color: white;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 4;
+    grid-gap: 15px;
+
+}
+.grid .p-card-title{
+    font-size: 20px;
+}
+.grid .p-card-content{
+    font-size: 15px;
+}
+.site{
+    grid-column: 1;
+    grid-row: 1;
+}
+.nom{
+    grid-column: 2;
+    grid-row: 1;
+}
+.idSecurityCenter{
+    grid-column: 3;
+    grid-row: 1;
+}
+.ip {
+    grid-column: 4;
+    grid-row: 1; 
+}
+.Arborecence{
+    grid-column: 1 / 5;
+}
+.nomencdeur{
+    grid-column: 1 / 3;
+}
+.guidencodeur{
+    grid-column: 3 / 5;
+}

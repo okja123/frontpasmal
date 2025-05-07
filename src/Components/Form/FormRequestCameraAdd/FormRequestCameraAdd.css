@@ -1,0 +1,41 @@
+.grid-from-camera{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+.grid-{
+    grid-column: 0;
+    grid-row: 1;
+}
+.grid-4{
+    grid-column: 4;
+    grid-row: 1;
+}
+.grid-from-camera .field{
+    margin: 10px;
+}
+.text-field-camera-form *{
+    color: black;
+}
+.span-4{
+    grid-column: span 4;
+}
+.span-2{
+    grid-column: span 2;
+}
+form{
+    margin-top: 30px;
+}
+.form-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.form-header h1{
+    color: #4b5563;
+}
+.form-camera .p-dropdown{
+    width: 100%;
+}

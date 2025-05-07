@@ -1,0 +1,47 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-image: radial-gradient(circle at 50% 0, #0742ab, #031f73 99%);
+    color: colors(mainText);
+    display: flex;
+    height: 4rem;
+}
+.option{
+    display: flex;
+    flex-direction: column;
+}
+.logo-camera-manager{
+    width: 10%;
+    margin: 6px ;
+}
+.logo-adp{
+    width: 10%;
+    margin: 3px;
+    margin-left: 20px;
+    transform: scale(1, -1);
+}
+.page-select{
+    border-radius: 0;
+    background-color: transparent;
+    border: 0;
+}
+.menu-item{
+    border-radius: 0;
+    border: 0;
+    background-color: transparent;
+}
+.menu-item:hover{
+    border-radius: 0;
+    border: 0;
+    background-color: #e2e6eb;
+}
+.menu-item *{
+    color: #4b5563;
+}
+.p-overlaypanel-content{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

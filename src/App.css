@@ -1,0 +1,18 @@
+@import url("/src/Components/GenericComponent.css");
+@import url("/node_modules/react-csv-importer/dist/index.css");
+.app{
+  width: 100%;
+  height: 100%;
+}
+.app .loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.app .error-message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
