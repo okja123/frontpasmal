@@ -109,7 +109,7 @@ export default function FormLicence(prop:IProp){
                         </div>
                         <div className="field">
                             <span className="p-float-label">
-                                <Controller name="ChargeOrderNumber" control={control} rules={{ required: "Ordre d'imputation TIME est Requis." }} render={({ field, fieldState }) => (
+                                <Controller name="ChargeOrderNumber" control={control} render={({ field, fieldState }) => (
                                     <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="ChargeOrderNumber" className={classNames({ 'p-error': errors.ChargeOrderNumber })}>Ordre d'imputation TIME</label>
@@ -119,7 +119,7 @@ export default function FormLicence(prop:IProp){
                         <span className="p-float-label">
                             Commentaire
                             <Controller name="Comment" control={control}  render={({ field}) => (
-                                <Editor id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
+                                <InputText id={field.name} {...field} autoFocus />
                             )} />
                         </span>
                         <div className="field">

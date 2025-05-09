@@ -69,10 +69,10 @@ export default function FormLicencePool(prop:IProp){
                         </div>
                         <div className="field grid-4">
                             <span className="p-float-label">
-                                <Controller name="Quantity" control={control} rules={{ required: 'Nom est Requis.' }} render={({ field, fieldState }) => (
+                                <Controller name="Quantity" control={control} render={({ field, fieldState }) => (
                                     <InputNumber id={field.name} {...field} onChange={(e) => field.onChange(e.value)} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="Quantity" className={classNames({ 'p-error': errors.Quantity })}>Qutantitée</label>
+                                <label htmlFor="Quantity" className={classNames({ 'p-error': errors.Quantity })}>Quantitée</label>
                             </span>
                             {getFormErrorMessage('Quantity',errors)}
                         </div>

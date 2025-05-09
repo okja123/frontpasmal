@@ -13,6 +13,8 @@ import { IStatus } from "../../../Utils/Interfaces/IStatus";
 import { MultiSelect } from "primereact/multiselect";
 import { TriStateCheckboxChangeEvent } from "primereact/tristatecheckbox";
 import { Tag } from "primereact/tag";
+import { ProgressBar } from "primereact/progressbar";
+import "./TableLicencePool.css"
 
 interface IProp{
     licencePools:ILicencePool[],
@@ -194,6 +196,21 @@ export default function TableLicencePool(prop:IProp){
             </div>
         )
     };
+    function LicencesTemplate(rowData:ILicencePool){
+        const nbrlicencesFacture:number = rowData.Licenses.filter((licence)=>licence.InvoiceDate!==undefined).length
+        const percentageDone:number = Math.trunc(nbrlicencesFacture*100/rowData.Licenses.length)
+        return(
+            <div className="licences-template">
+                <div>
+                Total : {rowData.Quantity} | Utilisées : {rowData.CameraQuantity} | Restantes : {(rowData.Quantity-rowData.CameraQuantity)}<br/>
+                </div>
+                <div>
+                Commandes Facturées :{nbrlicencesFacture} sur {rowData.Licenses.length}
+                <ProgressBar value={percentageDone}></ProgressBar>
+                </div>
+            </div>
+        )
+    }
     const statusFilterTemplate = (options:ColumnFilterElementTemplateOptions) => {
         return (
             <MultiSelect 
@@ -295,6 +312,11 @@ export default function TableLicencePool(prop:IProp){
                 ]}
                 filterElement={statusFilterTemplate}
                 filter
+            />
+            <Column 
+                key="Licences"
+                header="Licences"
+                body={LicencesTemplate}
             />
             </DataTable>
        </div>

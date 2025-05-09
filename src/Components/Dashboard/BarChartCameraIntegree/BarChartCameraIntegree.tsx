@@ -1,6 +1,7 @@
 import { Chart } from "primereact/chart";
 import { useEffect, useState } from "react";
 import { CameraManagerApiClient } from "../../../Utils/CameraManagerClientApi";
+import "./BarChartCameraIntegree.css"
 
 interface IProp{
     platform : string
@@ -73,7 +74,7 @@ export default function BarChartCameraIntegree(prop : IProp){
         });
     },[]);
     return(
-        <div className="barchartcameraintegree">
+        <div className="bar-chart-camera-integree">
             <h2>Caméras intégrées et licences par UO</h2>
             <Chart type="bar" data={Data} options={options} />
         </div>

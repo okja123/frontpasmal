@@ -26,6 +26,36 @@
     display: flex;
 }
 .table .table-collumn-tool button{
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+}
+.table th{
+    font-size: 10px;
+    padding: 3px;
+}
+.table th .p-column-filter{
+    width: 10px;
+}
+.table td{
+    font-size: 7px;
+    padding: 2px
+}
+.table td *{
+    font-size: 7px;
+}
+.table td button{
+    font-size: 10px;
+    width: auto;
+    height: auto;
+}
+.table td button *{
+    font-size: 10px;
+}
+.table .p-dropdown-label{
+    font-size: 1rem;
+}
+.table .table {
+    padding:2px;
+    background-color: rgb(147, 173, 196);
 }

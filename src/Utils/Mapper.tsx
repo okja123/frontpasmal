@@ -61,4 +61,20 @@ export default class Mapper{
             VideoUnitToDeleteGuid:camera.GuidUnit,
         }
     }
+    public static mapToCameraExel(cameras:ICamera[]):ICameraExel[]
+  {
+    return cameras.map((camera) => {
+        return{
+            Etas: camera.IsGeneralStateOk?"OK":"KO",
+            Uo:camera.ServiceName,
+            IdSecurityCenter:camera.SecurityCenterId,
+            NomCamera:camera.NameCamera,
+            NomArchiver:camera.Archiver,
+            NomEncodeur:camera.NameUnit,
+            AdresseIp:camera.IPAddress,
+            ArborecenceSecurityCenter:camera.TreeStructures.join("|"),
+            DureeArchivage:camera.RetentionPeriod,
+        }
+    })
+  }
 }

@@ -367,7 +367,7 @@ export default function FormRequestCameraAdd(prop:IProp){
                             <span className="p-float-label">
                                 Description
                                 <Controller name="DescriptionCamera" control={control}  render={({ field}) => (
-                                    <Editor className="editor" id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
+                                    <InputText id={field.name} {...field} autoFocus />
                                 )} />
                             </span>
                         </div>
@@ -414,8 +414,7 @@ export default function FormRequestCameraAdd(prop:IProp){
                             <span className="p-float-label">
                                 Commentaire
                                 <Controller name="DescriptionCamera" control={control}  render={({ field}) => (
-                                    <Editor className="editor" id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
-                                )} />
+                                    <InputText id={field.name} {...field} autoFocus />                                )} />
                             </span>
                         </div>
                         <div className="field">
@@ -458,8 +457,8 @@ export default function FormRequestCameraAdd(prop:IProp){
                             <span className="p-float-label">
                                 <Controller name="IsPtz" control={control}  render={({ field }) => (
                                     <ToggleButton
-                                    onLabel="PTZ activer" 
-                                    offLabel="PTZ desactiver" 
+                                    onLabel="PTZ On" 
+                                    offLabel="PTZ Off" 
                                     onIcon="pi pi-check" 
                                     offIcon="pi pi-times" 
                                     checked={field.value}                

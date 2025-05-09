@@ -429,8 +429,7 @@ export default function FormRequestCameraReplace(prop:IProp){
                             <span className="p-float-label">
                                 Description
                                 <Controller name="DescriptionCamera" control={control}  render={({ field}) => (
-                                    <Editor className="editor" id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
-                                )} />
+                                    <InputText id={field.name} {...field} autoFocus />                                )} />
                             </span>
                         </div>
 
@@ -476,8 +475,7 @@ export default function FormRequestCameraReplace(prop:IProp){
                             <span className="p-float-label">
                                 Commentaire
                                 <Controller name="DescriptionCamera" control={control}  render={({ field}) => (
-                                    <Editor className="editor" id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
-                                )} />
+                                    <InputText id={field.name} {...field} autoFocus />                                )} />
                             </span>
                         </div>
                         <div className="field">

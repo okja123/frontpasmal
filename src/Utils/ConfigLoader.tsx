@@ -1,4 +1,3 @@
-import { CameraManagerApiClient } from "./CameraManagerClientApi";
 import { IConfiguration } from "./Interfaces/Iconfig";
 
 export class ConfigLoader{

@@ -242,7 +242,7 @@ export default function FormRequest(prop:IProp){
                             <span className="p-float-label">
                                 Commentaire
                                 <Controller name="Comment" control={control}  render={({ field}) => (
-                                    <Editor id={field.name} {...field}  onTextChange={(e) => {field.onChange(e.textValue);}} style={{ height: '320px' }} />
+                                    <InputText id={field.name} {...field} autoFocus />
                                 )}/>
                             </span>
                         </div>

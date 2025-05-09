@@ -30,8 +30,6 @@ function App() {
     .then(()=>{
       Promise.all([
         CameraManagerApiClient.user_current(),
-        CameraManagerApiClient.user_roles(),
-        
       ])
       .then((values)=>{
         setUser(values[0]);       

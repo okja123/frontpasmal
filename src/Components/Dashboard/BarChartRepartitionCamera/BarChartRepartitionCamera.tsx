@@ -1,7 +1,7 @@
 import { Chart } from "primereact/chart";
 import { useEffect, useState } from "react";
 import { CameraManagerApiClient } from "../../../Utils/CameraManagerClientApi";
-
+import './BarChartRepartitionCamera.css'
 interface IProp{
     platform:string;
 }
@@ -60,7 +60,7 @@ export default function BarChartRepartitionCamera(prop:IProp){
         })
     },[]);
     return(
-        <div className="BarChartRepartitionCamera">
+        <div className="barchart-repartition-camera">
             <h2>Répartition des caméras sur Archiveurs sur/sous utilisé {prop.platform}</h2>
             <Chart type="bar" data={Data} options={options} />
         </div>

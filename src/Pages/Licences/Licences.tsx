@@ -169,7 +169,7 @@ export default function Licences(prop:IProp){
                 toast.current?.show({ severity: 'success', summary: 'Demande envoyée', detail: 'Suppresion reussie', life: 3000 });
             }
             else{
-                toast.current?.show({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppresion', life: 3000 });
+                toast.current?.show({ severity: 'error', summary: 'Erreur', detail: "Erreur lors de la suppresion une licence est toujour à l'interieur", life: 3000 });
             }
             loadData()
         })

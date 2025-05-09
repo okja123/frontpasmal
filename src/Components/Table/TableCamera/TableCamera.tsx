@@ -13,6 +13,10 @@ import { ICamera } from '../../../Utils/Interfaces/ICamera';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { CameraManagerApiClient } from '../../../Utils/CameraManagerClientApi';
 import CameraSnapshot from '../../Cameras/CameraSnapshot/CameraSnapshot';
+import { Divider } from 'primereact/divider';
+import { Inplace, InplaceDisplay, InplaceContent } from 'primereact/inplace';
+import { booleanFilterTemplate } from '../../GenericTemaplate/GenericTemplate';
+import Mapper from '../../../Utils/Mapper';
 interface IProp{
     cameras:ICamera[],
     selectionMode:"multiple" | "single" | "radiobutton" | "checkbox" | null | undefined
@@ -27,6 +31,7 @@ export default function TableCamera(prop:IProp){
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [filters, setFilters] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        IsGeneralStateOk: { value: null, matchMode: FilterMatchMode.EQUALS },
     });
     function onGlobalFilterChange(e:any){
         const value = e.target.value;
@@ -54,6 +59,31 @@ export default function TableCamera(prop:IProp){
         //setSelectedItems(event.value)
         prop.onSelect(event)
     }
+    function exportRequest(){
+        import('xlsx').then((xlsx) => {
+            const worksheet = xlsx.utils.json_to_sheet(Mapper.mapToCameraExel(prop.cameras));
+            const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+            const excelBuffer = xlsx.write(workbook, {
+                bookType: 'xlsx',
+                type: 'array'
+            });
+            saveAsExcelFile(excelBuffer, 'Cameras');
+        });
+        const saveAsExcelFile = (buffer:any, fileName:any) => {
+            import('file-saver').then((module) => {
+                if (module && module.default) {
+                    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+                    let EXCEL_EXTENSION = '.xlsx';
+                    const data = new Blob([buffer], {
+                        type: EXCEL_TYPE
+                    });
+    
+                    module.default.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+                }
+            });
+        };
+    }
+
     function header(){
         return(
             <div className='table-header'>
@@ -62,6 +92,7 @@ export default function TableCamera(prop:IProp){
                     <InputText placeholder="Rechercher" onChange={onGlobalFilterChange}/>
                 </IconField>
                 <div style={{margin:"auto"}}/>
+                <Button label="Exportée les cameras" severity="success" icon="pi pi-file-excel" onClick={exportRequest} /> 
             </div>
         )
     }
@@ -79,11 +110,6 @@ export default function TableCamera(prop:IProp){
         const croixrouge = <i className="pi pi-times" style={{ color: "red" }} />
         const traisvert = <i className="pi pi-check" style={{ color: "green" }} />
         const op = useRef<OverlayPanel>(null);
-        let encodedBase64 = ""
-        CameraManagerApiClient.camera_getSnapshot(rowData.GuidCamera,rowData.SiteName)
-        .then((response) => {
-            encodedBase64 = response
-        })
         return(
             <>
                 <i className={icon} style={{ color: color }}
@@ -106,14 +132,24 @@ export default function TableCamera(prop:IProp){
             
         )
     };
-    function IsGeneralStateOkFilterTemplate(options: ColumnFilterElementTemplateOptions){
+
+    const TreeStructureTemplate = (rowdata:ICamera)=>{
         return(
-            <>
-            <TriStateCheckbox  value={options.value} onChange={(e: TriStateCheckboxChangeEvent) => options.filterApplyCallback(e.value)} />
-            {"<--"}
-            </>
-        ) 
-    };
+            <Inplace>
+                <InplaceDisplay>Clicker pour afficher les Arborescence Security Center</InplaceDisplay>
+                <InplaceContent>
+                    {rowdata.TreeStructures.map((treeStructure,index)=>{
+                        return(
+                            <>
+                            {index!==0&&<Divider type="solid" />}
+                            {treeStructure}
+                            </>
+                        )
+                    })}
+                </InplaceContent>
+            </Inplace>
+        )
+    }
     return (
        <div className="table-test table">
             <DataTable
@@ -144,11 +180,12 @@ export default function TableCamera(prop:IProp){
             <Column
                  key="Ok"
                  header="Ok"
-                 field="IsGeneralStateOk"
+                 filterField="IsGeneralStateOk"
                  filter
+                 field='IsGeneralStateOk'
                  dataType="boolean" 
                  body={IsGeneralStateOkTemplate} 
-                 filterElement={IsGeneralStateOkFilterTemplate}
+                 filterElement={booleanFilterTemplate}
             />
             <Column
                 key="ServiceName"
@@ -192,6 +229,11 @@ export default function TableCamera(prop:IProp){
                 filter 
                 filterPlaceholder="Rechercher par IP" 
             />
+            <Column
+                 key="TreeStructures"
+                 field="TreeStructures"
+                 header="Arborescence Security Center" 
+                 body={TreeStructureTemplate}/>
             </DataTable>
        </div>
     );
